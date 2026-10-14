@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A one-minute game: walk from s to t on graphs from the expander lectures (Vadhan, Pseudorandomness, Chapter 4).">
+<title>Expander Race</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:6px">
+    <h1>Expander Race</h1>
+    <p class="sub">Pick a graph from the course. Each round puts you on a start vertex <b style="color:var(--player)">s</b> and names a target <b style="color:var(--target)">t</b>. Move along edges until you reach t, then the next pair appears. You have one minute: how many pairs can you solve? On an expander every t is only a few steps away; on a cycle or a grid it is not.</p>
+  </header>
+
+  <div class="levels" id="levels" role="list"></div>
+
+  <div class="game">
+    <div class="board" id="board">
+      <canvas id="cv" aria-label="Graph board"></canvas>
+      <div class="overlay" id="ov"></div>
+    </div>
+    <div class="hud">
+      <div class="box">
+        <div class="row"><span class="k">TIME</span><span class="v" id="time">60.0 s</span></div>
+        <div class="timer"><i id="bar"></i></div>
+        <div class="row"><span class="k">SOLVED</span><span class="score" id="score">0</span></div>
+      </div>
+      <div class="box" id="roundBox">
+        <div class="st">
+          <div class="chip s"><span class="k">YOU ARE AT</span><span class="v" id="cur">–</span></div>
+          <div class="chip t"><span class="k">TARGET t</span><span class="v" id="tgt">–</span></div>
+        </div>
+        <div class="row"><span class="k">MOVES THIS ROUND</span><span class="v" id="mv">0</span></div>
+        <div class="row"><span class="k">DISTANCE TO t NOW</span><span class="v" id="dist">–</span></div>
+        <span class="k">EDGES (press the number key or click)</span>
+        <div class="moves" id="moves"></div>
+        <div class="btns"><button id="skip">Skip pair (S)</button><button id="quit">End run</button></div>
+      </div>
+      <div class="box"><h2 id="lvName">–</h2><p class="desc" id="lvDesc"></p><div class="log" id="log"></div></div>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
